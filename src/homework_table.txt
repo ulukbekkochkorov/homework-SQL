@@ -1,0 +1,214 @@
+CREATE TABLE student(
+    id SERIAL PRIMARY KEY,
+    name_of_student VARCHAR(50),
+    last_name VARCHAR (50),
+    course INT,
+    phone_number VARCHAR
+);
+INSERT INTO student (name_of_student, last_name, course, phone_number)
+values ('Nurdin','Kadyrov', 2, '0555555777'),
+       ('Nursultan', 'Tatenov',3, '0555777555'),
+       ('Marat', 'Asanov', 3,'0772000222'),
+       ('Aizada', 'Akmatova', 2, '0222111333');
+
+CREATE TABLE athletes
+(
+    id              SERIAL PRIMARY KEY,
+    name_of_athlets VARCHAR(50),
+    surname         VARCHAR(50),
+    kind_of_sport   VARCHAR(50) NOT NULL,
+    weight      INT         NOT NULL
+);
+INSERT INTO athletes (name_of_athlets, surname, kind_of_sport, weight)
+values ('Asan', 'Usonov', 'Boxing', 76),
+       ('Aslan', 'Askarov', 'Wrestling', 71),
+       ('Marat', 'Mederov', 'Boxing', 57),
+       ('Zaur', 'Tregulov', 'Wrestling', 68);
+
+CREATE TABLE cars(
+    id            SERIAL PRIMARY KEY,
+    model         VARCHAR(40),
+    year          INT,
+    engine_volume DOUBLE PRECISION,
+    colour        VARCHAR(30)
+);
+
+INSERT INTO cars(model, year, engine_volume, colour)
+values ('Toyota Camry', 2022, 2.4, 'Black'),
+       ('Mersedes', 2021, 5.5, 'Black'),
+       ('Lexus', 2022, 5.7, 'White'),
+       ('Infinity', 2020, 4.4, 'Silver');
+
+CREATE TABLE animals(
+    id SERIAL PRIMARY KEY,
+    kind_of_animal VARCHAR(50)   NOT NULL,
+    age INT,
+    kind_of_food  VARCHAR(50) NOT NULL,
+    weight      INT
+);
+INSERT INTO animals (kind_of_animal, age, kind_of_food, weight)
+values ('Tiger', 7, 'meat', 170),
+       ('Lion', 5, 'meat', 200),
+       ('Giraf', 3, 'herbivore', 57),
+       ('Monkey', 4, 'Banana', 8),
+       ('Rabbite', 2, 'carrot', 10);
+
+CREATE TABLE teachers(
+    id              SERIAL PRIMARY KEY,
+    name_of_teachers VARCHAR(50),
+    surname         VARCHAR(50),
+    subject   VARCHAR(50) NOT NULL,
+    work_experience  INT         NOT NULL,
+    academic_degree VARCHAR(50)
+
+);
+INSERT INTO teachers (name_of_teachers, surname, subject, work_experience, academic_degree)
+values ('Asan', 'Asanov', 'phisic', 16, 'PHD'),
+       ('Aslan', 'Arapov', 'Math', 7, 'Magistr'),
+       ('Marat', 'Mederov', 'literatura', 5, 'Magistr'),
+       ('Aida', 'Karaeva', 'biology', 2, 'Bacalavr'),
+       ('Zaur', 'Tregulov', 'IT science', 6, 'Magistr');
+
+CREATE TABLE tracs(
+id            SERIAL PRIMARY KEY,
+model         VARCHAR(40),
+year          INT,
+engine_volume DOUBLE PRECISION,
+colour        VARCHAR(30),
+carrying DOUBLE PRECISION
+);
+
+INSERT INTO tracs(model, year, engine_volume, colour, carrying)
+values ('Toyota', 2022, 9.8, 'Black', 24.5),
+       ('Mersedes', 2021, 8.5, 'Red', 12),
+       ('Volvo', 2022, 12.5, 'White',24),
+       ('DAF', 2020, 10.6, 'Silver', 22);
+
+CREATE TABLE buses(
+id            SERIAL PRIMARY KEY,
+model         VARCHAR(40),
+year          INT,
+passenger_capacity INT,
+colour        VARCHAR(30),
+route_number INT
+);
+
+INSERT INTO buses(model, year, passenger_capacity, colour, route_number)
+values ('Tatra', 2022, 24, 'Yellow', 24),
+       ('Mersedes', 2021, 32, 'Red', 32),
+       ('Volvo', 2022, 34, 'White', 48),
+       ('Setra', 2020, 48, 'Silver', 212);
+
+CREATE TABLE movies(
+    id SERIAL PRIMARY KEY,
+    name_of_movies VARCHAR(50),
+    genre VARCHAR,
+    starring VARCHAR,
+    year INT
+);
+INSERT INTO movies (name_of_movies, genre, starring, year)
+values ('Gladiator', 'historical thriller', 'Rassel Crou',2000),
+       ('Top Gan: Maverick', ' action', 'Tom Cruise', 2022),
+       ('Akyrky sabak', 'thriller', 'Chyngyz Kalybek',2021);
+
+CREATE TABLE products(
+    id SERIAL PRIMARY KEY,
+    product_name VARCHAR(50) NOT NULL,
+    manufacturer VARCHAR(50) NOT NULL,
+    product_count INT DEFAULT 0,
+    price NUMERIC
+);
+INSERT INTO products(product_name, manufacturer, product_count,price)
+values ('Iphone X', 'Apple',2, 72000),
+       ('Galaxy 8', 'Samsung', 3, 56000),
+       ('Iphone 13 PRO', 'Apple',2, 120000),
+       ('Galaxy 9', 'Samsung', 2, 59000),
+       ('Desire 12', 'HTC', 3, 26000);
+
+CREATE TABLE sports(
+    id SERIAL PRIMARY KEY,
+    name_of_sports VARCHAR(50),
+    salary NUMERIC
+);
+
+CREATE TABLE trainers(
+    id INT PRIMARY KEY,
+    name_of_trainer VARCHAR(50),
+    phone VARCHAR(50),
+    inn VARCHAR(20) UNIQUE,
+    sports_id INT REFERENCES sports(id)
+);
+INSERT INTO sports(name_of_sports, salary)
+values ('Football', 2000),
+       ('Volleyball', 2000),
+        ('Ice-hockey', 2000);
+
+INSERT INTO trainers (name_of_trainer, phone, inn, sports_id)
+values ('Jurgen Klop', '0555555777', '02121019740012',1),
+       ('Marat', '0555777555', '02101019780019',2),
+       ('Tihonov', '0556222111', '02220619800022',3);
+
+create table employees (
+id serial primary key not null ,
+first_name VARCHAR(50) not null ,
+last_name VARCHAR(50) not null ,
+email VARCHAR(50) not null ,
+gender VARCHAR(50) not null ,
+country VARCHAR(50) not null ,
+age INT not null
+);
+insert into employees ( first_name, last_name, email, gender, country, age)
+values ( 'Nealon', 'Bissill', 'nbissill0@reference.com', 'Agender', 'Poland', 97),
+         ( 'Myra', 'Thornley', 'mthornley1@comsenz.com', 'Female', 'Russia', 28),
+        ( 'Son', 'MacNab', 'smacnab2@blogs.com', 'Male', 'Pakistan', 33),
+        ( 'Jabez', 'Melson', 'jmelson3@japanpost.jp', 'Male', 'Bangladesh', 41),
+        ( 'Greggory', 'Bertome', 'gbertome4@linkedin.com', 'Male', 'Palestinian Territory', 72),
+        ( 'Maddie', 'Flux', 'mflux5@taobao.com', 'Male', 'Indonesia', 62),
+        ( 'Claudie', 'Denziloe', 'cdenziloe6@delicious.com', 'Female', 'Indonesia', 30);
+
+CREATE TABLE region_of_kg
+(   id          SERIAL PRIMARY KEY,
+    name_region VARCHAR NOT NULL,
+    area        NUMERIC,
+    population  NUMERIC,
+    type VARCHAR NOT NULL
+);
+INSERT INTO region_of_kg(name_region, area, population, type)
+VALUES ('Bishkek', 160 , 1088900, 'city'),
+       ('Osh', 185 , 273900, 'city'),
+       ('Batken', 17000, 465200, 'region'),
+       ('Jalal-Abad', 33700, 1236800, 'region'),
+       ('Naryn', 45200, 271400, 'region'),
+       ('Osh', 29200, 1209400, 'region'),
+       ('Talas', 11400, 251800, 'region'),
+       ('Chuy', 20200, 818000, 'region'),
+       ('Yssyk-Kol', 43100, 469700, 'region');
+
+CREATE TABLE planes(
+id SERIAL PRIMARY KEY,
+model VARCHAR NOT NULL,
+manufacturer_country VARCHAR(50) Not NULL,
+width INTEGER NOT NULL,
+weight INTEGER,
+length INTEGER,
+fly_height INTEGER
+);
+INSERT INTO planes(model, manufacturer_country, width, weight, length, fly_height)
+VALUES ('Airbus A320', 'France', 37, 77000,34,12000),
+       ('Boing 777', 'USA', 34, 37000, 32, 15000),
+       ('An 322', 'Russia', 45, 67000, 35, 10000),
+       ('Yak 40', 'USSR', 21, 14000, 22, 5000);
+
+CREATE TABLE human_in_family(
+id SERIAL PRIMARY KEY,
+first_name VARCHAR,
+age INT,
+weight INT,
+height INT
+);
+
+INSERT INTO human_in_family(first_name, age, weight, height)
+VALUES ('Nurbek', 11, 30, 127),
+       ('Erkin', 26, 60, 167),
+       ('Saira', 3, 15, 96),
+       ('Daira', 1, 12, 78);
